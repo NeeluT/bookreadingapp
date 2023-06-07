@@ -1,3 +1,4 @@
+from django.forms.models import BaseModelForm
 from django.shortcuts import render, redirect
 from .models import Child, Book
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -7,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 # from .data import data
-from .forms import ChildForm
+from .forms import ReviewForm
 
 
 # Create your views here.
@@ -21,11 +22,12 @@ def about(request):
 
 def books_index(request):
     books = Book.objects.all()
-    return render(request, 'books/index.html',{'books': books})
+    return render(request, 'main_app/book_index.html',{'books': books})
 
 def books_detail(request,book_id):
     books = Book.objects.filter(id=book_id)
-    return render(request, 'books/detail.html',{'book': books})
+    review_form = ReviewForm()
+    return render(request, 'main_app/book_detail.html',{'book': books.all, 'review_form': review_form })
 
 
 @login_required
@@ -96,8 +98,17 @@ def disassoc_book(request, child_id, book_id):
 class BookList(LoginRequiredMixin,ListView):
   model = Book
 
-class BookDetail(LoginRequiredMixin,DetailView):
-  model = Book
+# class BookDetail(LoginRequiredMixin,DetailView):
+#   model = Book
+
+@login_required
+def add_review(request, book_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.book_id = book_id
+        new_review.save()
+    return redirect('book_detail', book_id=book_id)
 
 def signup(request):
     print(request)

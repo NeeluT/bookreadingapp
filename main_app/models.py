@@ -29,7 +29,7 @@ class Book(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('books_detail', kwargs={'pk': self.id})
+        return reverse('book_detail', kwargs={'book_id': self.id})
 
 
 class Child(models.Model):
@@ -56,11 +56,20 @@ class Child(models.Model):
     def __str__(self):
         return f"{self.get_age_group_display()}"
     
-# class Review(models.Model):
-#     review = models.CharField(max_length=500)
-#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+class Review(models.Model):
+    review = models.CharField(max_length=1000)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+      
 
-#     def __str__(self):
-#         return self
+    def __str__(self):
+        return f"{self.name} {self.id}"    
+    
+
+    
+
+
+
+    
 
 
