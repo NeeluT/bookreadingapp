@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Your munchkins</h1>
+
+{% if books %}
+
+{% for book in books %}
+
+ <a href="{% url 'books_detail' book.id %}">
+    <p>title:{{book.title}}</p>
+    <p>author: {{book.author}}</p>
+    <img src={{book.image_url}} alt=''>
+    <p>description:{{ book.description}}</p>
+    <p>age_group:{{ book.age_group}}</p>
+ </a>
+
+
+{% endfor %}
+{% else %}
+<p>No book</p>
+
+{% endif%}
+ 
+
+{% endblock %}

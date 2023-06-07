@@ -4,10 +4,32 @@
 
 <h1>Book Details</h1>
 
-<p>title:{{book.title}}</p>
-<p>author: {{book.author}}</p>
-<img src={{book.image_url}} alt=''>
-<p>description:{{ book.description}}</p>
-<p>age_group:{{ book.age_group}}</p>
+{% for b in book.all %}
+<p>title:{{b.title}}</p>
+<p>author: {{b.author}}</p>
+<img src={{b.image_url}} alt=''>
+<p>description:{{ b.description}}</p>
+<p>age_group:{{ b.age_group}}</p>
+{% endfor %}
+<div class="col s6">
+    <form action="{% url 'add_review' book.id %}">
+      {% csrf_token %}
+      
+      {{ review_form.as_p }}
+      <input type="submit" class="btn" value="Add Review">
+    </form>
+    <br>
+    <table class="striped">
+      <thead>
+        <tr><th>Review</th><th>Review blah blah blah</th></tr>
+      </thead>
+      <tbody>
+        {% for review in book.review_set.all %}
+          <tr>
+            <td>{{review.review}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
 {% endblock %}

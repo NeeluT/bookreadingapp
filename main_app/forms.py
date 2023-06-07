@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import Child
+from .models import Review
 
-class ChildForm(ModelForm):
+class ReviewForm(ModelForm):
     class Meta:
-        model = Child
-        fields = ['name', 'age_group']
+        model = Review
+        fields = '__all__'
