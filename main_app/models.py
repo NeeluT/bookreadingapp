@@ -29,7 +29,7 @@ class Book(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('book_detail', kwargs={'book_id': self.id})
+        return (reverse('books_detail', kwargs={'book_id': self.id})or reverse('add_review', kwargs={'book_id': self.id}))
 
 
 class Child(models.Model):
@@ -63,7 +63,11 @@ class Review(models.Model):
       
 
     def __str__(self):
-        return f"{self.name} {self.id}"    
+        return f"review={self.review} id={self.id}"  
+    def get_absolute_url(self):
+        return reverse('add_review', kwargs={'book_id': self.id})
+
+     
     
 
     

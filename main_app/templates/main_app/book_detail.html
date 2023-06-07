@@ -10,9 +10,9 @@
 <img src={{b.image_url}} alt=''>
 <p>description:{{ b.description}}</p>
 <p>age_group:{{ b.age_group}}</p>
-{% endfor %}
+
 <div class="col s6">
-    <form action="{% url 'add_review' book.id %}">
+    <form action="{% url 'add_review' b.id %}" method='POST'>
       {% csrf_token %}
       
       {{ review_form.as_p }}
@@ -21,15 +21,16 @@
     <br>
     <table class="striped">
       <thead>
-        <tr><th>Review</th><th>Review blah blah blah</th></tr>
+        <tr><th>Review</th></tr>
       </thead>
       <tbody>
-        {% for review in book.review_set.all %}
+       
+        {% for review in review %}
           <tr>
             <td>{{review.review}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-
+{% endfor%}
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.forms.models import BaseModelForm
 from django.shortcuts import render, redirect
-from .models import Child, Book
+from .models import Child, Book, Review
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -26,8 +26,9 @@ def books_index(request):
 
 def books_detail(request,book_id):
     books = Book.objects.filter(id=book_id)
+    review = Review.objects.filter(book=book_id)
     review_form = ReviewForm()
-    return render(request, 'main_app/book_detail.html',{'book': books.all, 'review_form': review_form })
+    return render(request, 'main_app/book_detail.html',{'book': books.all, 'review_form': review_form, 'review':review })
 
 
 @login_required
@@ -108,7 +109,7 @@ def add_review(request, book_id):
         new_review = form.save(commit=False)
         new_review.book_id = book_id
         new_review.save()
-    return redirect('book_detail', book_id=book_id)
+    return redirect('books_detail', book_id=book_id)
 
 def signup(request):
     print(request)
