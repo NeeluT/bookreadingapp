@@ -24,6 +24,7 @@
                 <div>{{ book.title}}</div>
                 <div>{{ book.author}}</div>
                 <div>{{ book.description}}</div>
+                <div>{{ book.age_group}}</div>
               <form action="{% url 'disassoc_book' child.id book.id %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn">Remove</button>
@@ -46,21 +47,25 @@
 
         {% if books.count %}
           {% for book in books.all %}
-            <div class="card">
-              <div class="card-content">
-                {{book.title}}
+           {% if book not in child.books.all %}
+
+              <div class="card">
+                <div class="card-content">
+                  {{book.title}}
+                </div>
+                <div class="card-action">
+                  <form action="{% url 'assoc_book' child.id book.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Add</button>
+                  </form>
+                </div>
               </div>
-              <div class="card-action">
-                <form action="{% url 'assoc_book' child.id book.id %}" method="POST">
-                  {% csrf_token %}
-                  <button type="submit" class="btn">Add</button>
-                </form>
-              </div>
-            </div>
-          {% endfor %}
+              {% endif %}
+              {% endfor %}
         {% else %}
           <h5>{{child.name}} Already Has Read All The Available Books</h5>
         {% endif %}
+       
       </div>  
 
 {% endblock %}

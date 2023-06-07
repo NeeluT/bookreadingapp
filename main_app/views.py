@@ -48,10 +48,28 @@ def children_index(request):
 #     })
 
 @login_required
-def children_detail(request, child_id):
+def children_detail(request, child_id): 
+    
+    tu={'D': [1,2,3], 
+        'E': [4,5,6],
+        'F': [7,8,9,10,11,12,13]}
+    letterHoldingAge=""
+    
     child = Child.objects.get(id=child_id)
+    
+    for t in tu:
+        if(child.age_group in tu[t]):
+            letterHoldingAge=t
+            
+    print(child.age_group)
+    print(letterHoldingAge)        
+    
     id_list = child.books.all().values_list('id')
-    books_child_doesnt_have = Book.objects.exclude(id__in=id_list)
+    books_child_doesnt_have = Book.objects.filter(age_group=letterHoldingAge)
+    print(books_child_doesnt_have)
+
+      
+
     return render(request, 'children/detail.html', {
         'child': child,
         'books': books_child_doesnt_have
