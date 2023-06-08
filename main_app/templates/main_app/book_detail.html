@@ -12,12 +12,16 @@
 <p>age_group:{{ b.age_group}}</p>
 
 <div class="col s6">
+
+  {% if user.is_authenticated %}
     <form action="{% url 'add_review' b.id %}" method='POST'>
       {% csrf_token %}
       
       {{ review_form.as_p }}
       <input type="submit" class="btn" value="Add Review">
     </form>
+b{% endif %}
+
     <br>
     <table class="striped">
       <thead>

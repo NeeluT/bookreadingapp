@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class='parent'>
+  <div class='parentImage'></div>
+  <div class='parentInfo'></div>
 
-<h1>Your munchkins</h1>
-
-
+</div>
+<h1>Your Munchkins</h1>
 
 {% if children %}
 
 {% for child in children %}
-  <p>Child Name: {{child.name}}</p>
-  <a href="{% url 'detail' child.id %}">x</a>
+  
+  <a href="{% url 'detail' child.id %}">
+    <p class='children'>Child Name: {{child.name}}</p>
+
+  </a>
 {% endfor %}
 {% else %}
 

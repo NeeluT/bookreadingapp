@@ -1,27 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Your munchkins</h1>
+<div class='bookcenter'>
+<h1>BOOKS</h1>
 
 {% if books %}
-
+<div class='bookimgdiv'>
 {% for book in books %}
 
  <a href="{% url 'books_detail' book.id %}">
-    <p>title:{{book.title}}</p>
-    <p>author: {{book.author}}</p>
-    <img src={{book.image_url}} alt=''>
-    <p>description:{{ book.description}}</p>
-    <p>age_group:{{ book.age_group}}</p>
+  
+    <img class='bookimg' src={{book.image_url}} alt=''>
+    
  </a>
 
 
 {% endfor %}
+</div>
 {% else %}
 <p>No book</p>
 
 {% endif%}
- 
+ </div>
 
 {% endblock %}

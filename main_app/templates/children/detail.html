@@ -40,9 +40,9 @@
   </div>
   <!-- Available toys will come after this line -->
   <!-- New Markup Below -->
-  <div class="col s6">
+  <div class="tt">
 
-    <div class="col s6">
+    <div >
         <h3>Available Books</h3>
 
         {% if books.count %}
@@ -51,6 +51,7 @@
 
               <div class="card">
                 <div class="card-content">
+                  <img class='bookImg' src='{{book.image_url}}'/>
                   {{book.title}}
                 </div>
                 <div class="card-action">

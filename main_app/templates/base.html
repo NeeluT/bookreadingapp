@@ -1,3 +1,4 @@
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -5,27 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Read it, baby!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css'%}"
+    >
 </head>
-<body>
+<body >
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Child Collector</a></li>
         </ul>
-        <ul class="right">
-            <li><a href="{% url 'about' %}">About</a></li>
+        <ul class="right" >
+            <li><a class="menu" href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
               
-                <li><a href="{% url 'books_index' %}">View all books</a></li>
-                <li><a href="{% url 'child_create' %}">Add Child</a></li>
+                <li><a class="menu" href="{% url 'books_index' %}">View all books</a></li>
+                <li><a class="menu" href="{% url 'child_create' %}">Add Child</a></li>
 
             
-                <li><a href="{% url 'index' %}">View all children</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a class="menu" href="{% url 'index' %}">View all children</a></li>
+                <li><a class="menu" href="{% url 'logout' %}">Logout</a></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="menu" href="{% url 'books_index' %}">View all books</a></li>
+                <li><a class="menu" href="{% url 'login' %}">Login</a></li>
+                <li><a class="menu" href="{% url 'signup' %}">Sign Up</a></li>
             {% endif %}
         </ul>
       </div>
@@ -35,9 +42,11 @@
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2023 Bravo Six&nbsp;</div>
-  </footer>
+  {% comment %} <img class='svg' src='https://lh3.googleusercontent.com/X71Efv6erdlq0ByTlG3UbulPrm4yG1onTBgdq_3q_EokkmGYeVZn2KYBSwnXl0LlUFuz4vKMLrzYuDLr2Sg7fDtbSDZN-n074VQbdFy9nf-HqSOh4bsDlw5BSsas7eks82hcAE8fnlThfQ3g9RkLNQigzg2Zr8iSA4xEZt-jEgQQ51b7f2U7H_eGdf5yYzPUy1-dm4-v_7CEnv29QE839r0A4_vBwEkl4ZJRr7HEyh966_zGNdmiwB4hMLInoH3OLEzP-z9O9Z4_YVPvwdYSjIko0aT72axWpsj0WMi7-n27UMYJqCco9ePIdE9ovhGqp5GUOdgtaP_ONoLLzfTjelA6Dm-hnPuwYhtH4fjr7p0Co2M0NHlZK1QNx6qzz49DTy9H49IuRhzVMp1pCckq64j5zD7fXfcmTLuWFPuByloJcAEf2UfLv_U54wMKXPV7qAZ9b5fyRjbNeCb8rAgtHD6S8o9-KClTMbp3mb5aUJCR2pFLEsubM_JodN66Ofpy3koQiWDzZf6uKRLnzLshq2ot3LiT44P15kYaAVaLfDwM0Os-fb54nk9xZjrari_YZAWbUCRidbipyfOSj_pTow4u6exCtE2dcSjDH4v66LGFC-PJTX6qeXT-TrBeMzvlQkJMor2Ynl0vRFsxluRtfEMAZRsgn5zC0NTXJlByPSGD6_NP_a4SADgcyMCFXenIwQrWwHJsp-WZ56IvuhSzMUDcMWGxS4MZgLjusH1qTjj4ETi4qtjxqkphqav45-Nv0nn03EmvdsKwTh8xGwldtQGsK0ziZ8ZUvCEwDB9uD0XHEIXQCj0cDtfBVAQq1bVKfII-D6WIXa8gePcSXENbYu4AsG4dl1Tad5VX-gzLQ2oBVke_hxYBFp0GYcQGJl7LRrRWHLkLmpNI8eUyDKW0DuyxpGXwaemv_AnnKmcGUAo0JW7dMJ8FUAO3KgVYyyrSFjAgpU2zIw72nFkC5c_Bg-uYTC_skXA0_wMouSIVU5rOJG8p2gaYI1N6ATsOPOAKnwNmbEgv_kOzL85o5WEOIaXAW90IjeHIRNmKQKxC8df6qpNBPTVxbVff3M7q5g6RVKmesJ_2-8Fl9uEwxVFGh-xofrrkBmplIFVK553Jdmg2ZaF981eFpzMrhgGH7IS959Pnfok=w1332-h1329-s-no?authuser=0'/> {% endcomment %}
+  <img class='sun' src='https://lh3.googleusercontent.com/xy0n-O_G3wBsA8kaq7-M1oT4sYqm6ujHrqGSfngBfAgp3drFGVQ4T5pZeOJP2jbXnoiKL16CPTWtyBeYash4hkvISjsJREBPq9PfnvRU5hKOrKZRHvVX4c5rqunHzC4n71LR9t8xGL0LlL0huEnCUtO5N1La1dgb_O2dxHoV8sUck4nABFfGxOBqRkOlskMijz0U9VOWTMUAwdBSnXNZ2xrzbHHwvsiyUkhuGHU-vmwDEEIuFT5VrbnobOk6NeZhLFaK2WgH4VojWT_3jQcirSYircgYM554B6xOqiJFmhGzPBNOF0niukfjOmdyOFgDgEH9Z_j9VseD2y7XBFth3tHXMuT1PDxNXR7RxEgRI04k2iNHcr6w_0EXyn9WdpLDp9E-Xc7gOFgpRV8wk8_mYx4pF1G4xGKCK_ICYgblser7rD8hkYenGAoh3jw7GHH6SQpVCRdf5ePu06iSPrGIkyK4CslRvlr6AZR14Isbd7MiafNk8k51O2kK3iDU0kqx_s5Fw9wmOWrp8tTOdEow_YllqjHxWNlGtKm1qaFKIX3u-MXcDcG3yRF1rTOhlK55fddlwXdihLQloA7SlSEppK9kEnqHHSU5w_s13-jt6M1rji7YJ_zO4emA-HL3bq27zkFOcQJ66QIeiIcjrQATnVGLfaf12dMj9V93l_MB3FTGjeQPm0T28d5dMoS0tYsSaWyN1Tur2OtYjI1PeyJgYjfztmbqBhgZi_LDE5g7fOGJsX-kwwCKsVGXDDlyozWOnnCC_AhcYGfsf_FP8yrngEYUDpt9d1c_i38uQJLp-wj8JBCe5Eeh1jsVfvoC48aOX3ZV-Rjpu_i6xRpOXKxJnEpjGtSF_PEK7ErCsFs-aLkAS4ToEo-UZWMetsTaOiEH3EYNo6zPBWpzaAKLfNUM0v9TW4YbnSX4HZsDLiQrI9ptnfPzeMkmt9UkDcmF6_4EcotAYyhw2eSrta6ULL9EnGhZkHYQdnTxtnjhIcAmircUJNJ-PWHqRwddDLR8EHo-I5JwnaNCNIaqF1PNz9mL7hMOsLqgsYBJLqgVuqIzEsIuybZMtCA1NLpFzbwQkhgHWxc4eztDJpdfekeDNqKH89suEZEcm5yOaeTBWNgLILI13FlBWoROMKQxjggpUSfZG-DtMrY=w1329-h1329-s-no?authuser=0' alt=''/>
 </body>
+{% comment %} <footer class="page-footer">
+    <div class="right">All Rights Reserved, &copy; 2023 Bravo Six&nbsp;</div>
+  </footer> {% endcomment %}
 </html>
 
