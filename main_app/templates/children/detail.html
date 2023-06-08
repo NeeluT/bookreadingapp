@@ -2,15 +2,20 @@
 
 {% block content %}
 
-<h1>Child Details</h1>
+<div style='height:100px'></div>
+    <div class='childinfodiv'>
+        <img class='boss' style='width:30vmin;height:30vmin' src='https://lh3.googleusercontent.com/pw/AJFCJaUqZEReCaOx69hwkZpBahKcEukQvrk3LW-ymssqhaB879Gpm79aEL8Rc_nnASDfVNFbi9fe518TXadtjyFnlvS8FfhucOkJZbigFCQtPUHuC2IPHSFzp9GXB6BVxx9EqCBAMEMpmscmDCxOeo_QtGjv=w1315-h1272-s-no?authuser=0' alt=''>
+          <div class='childinf'>
+            <p class='child'><strong class='aaa'>Name:&nbsp;</strong>{{ child.name }}</p>
+            <p class='child'><strong class='aaa'>Age:&nbsp;</strong>{{ child.age_group }}</p>
+            <div class="card-action">
+              <a href="{% url 'child_update' child.id %}">Edit</a>
+              <a href="{% url 'child_delete' child.id %}">Delete</a>
+            </div>
+          </div>
+    </div>
 
-<p>Name: {{ child.name }}</p>
-<p>Age: {{ child.age_group }}</p>
 
-<div class="card-action">
-    <a href="{% url 'child_update' child.id %}">Edit</a>
-    <a href="{% url 'child_delete' child.id %}">Delete</a>
-  </div>
 
   <div class="row">
     <div >

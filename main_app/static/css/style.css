@@ -4,6 +4,10 @@ body{
     overflow-x : hidden;
     height: auto;
 }
+.boss{
+    width: 10vmin;
+    height:10vmin;
+}
 .svg{
   
     height: 90vmin;
@@ -12,6 +16,14 @@ body{
     right: 0;
     z-index: -2;
     
+}
+.childinfodiv{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+.childinf{
+    font-size: 40px;
 }
 .sun{
     width: 30vmin;
@@ -27,7 +39,6 @@ body{
     width: 17.7vmin;
     z-index: 2;
     border-radius: 0px 30px 30px 0px;
-    
 }
 a{
     z-index: 2;
@@ -47,15 +58,22 @@ a{
 
 .bookdetail{
     display: flex;
-    gap:6%
+    justify-content: center;
+    align-items: center;
+    gap:3%
 }
 .detailimg{
-    width: 40%;
+    width: 320px;
+    height: 350px;
+    border-radius: 0px 20px 20px 0px;
 }
 .detailinfo{
     width: 60%;
 }
-
+#id_review{
+    width: 100%;
+    justify-content: left;
+}
 
 li>.brand-logo{color: rgb(211, 109, 0);}
 .menu{color: rgb(211, 109, 0);}
@@ -74,8 +92,19 @@ li>.brand-logo{color: rgb(211, 109, 0);}
     border-radius: 20px;
     height: 100px;
     display: flex;
+    font-size: 25px;
     justify-content: center;
     align-items: center;
+}
+.bbb{
+        font-size: 25px;
+        margin-bottom: 40px;
+        margin-top: 40px;
+        text-align: justify;
+        border-radius: 20px
+}
+label{
+    color: #0eab71;
 }
 .parent{
    margin-top: 100px;
@@ -87,6 +116,61 @@ li>.brand-logo{color: rgb(211, 109, 0);}
     width: 100%;
     align-items: center;
 }
+.parent1{
+    margin-top: 100px;
+    border-radius: 20px;
+     display: flex;
+     gap: 30px;
+     flex-direction: column;
+     justify-content: space-between;
+     width: 100%;
+     align-items: center;
+ }
+.imgback{
+    background-color:#0eab71;
+    border-radius: 50%;
+    padding: 50px;
+    
+}
+.parentpic{
+    width:280px;
+    height:280px;
+}
+.child{
+    background: rgba(255, 243, 134, 0.42);
+    box-shadow: 40px 40px 73px 2px rgba(171, 91, 91, 0.45);
+    border-radius: 20px;
+     display: flex;
+     
+    padding: 10px;
+     align-items: center;
+     width: 500px;
+     text-align: center;
+ }
+ .aaa{
+    color: rgb(7, 170, 7);
+ }
+.aaaa{
+font-size: 23px;
+        background: rgba(255, 243, 134, 0.42);
+        box-shadow: 40px 40px 73px 2px rgba(171, 91, 91, 0.45);
+        border-radius: 20px;
+        padding: 10px;
+         width: 500px;
+         text-align: left;
+     
+}
+ .child1{
+    background: rgba(255, 243, 134, 0.42);
+    box-shadow: 40px 40px 73px 2px rgba(171, 91, 91, 0.45);
+    border-radius: 20px;
+     display: flex;
+    padding: 10px;
+    justify-content: center;
+     align-items: center;
+     width: 500px;
+     text-align: left;
+ }
 .tt{
     margin-top: 50px;
     display: flex;

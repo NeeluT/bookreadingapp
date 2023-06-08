@@ -2,31 +2,31 @@
 
 {% block content %}
 
-<h1>Book Details</h1>
 
+<div style='height:100px'></div>
 {% for b in book.all %}
 <div class='bookdetail'>
   <img class='detailimg' src={{b.image_url}} alt=''>
   
   <div class='detailinfo'>
-  <p>title:{{b.title}}</p>
-  <p>author: {{b.author}}</p>
-  <p>description:{{ b.description}}</p>
-  <p>age_group:{{ b.age_group}}</p>
+  <p class='aaaa'><strong class='aaa'>Title:</strong> {{b.title}}</p>
+  <p class='aaaa'><strong class='aaa'>Author:</strong> {{b.author}}</p>
+  <p class='aaaa'><strong class='aaa'>Description:</strong> {{ b.description}}</p>
+  <p class='aaaa'><strong class='aaa'>Age:</strong> {{ b.age_group}}</p>
   </div>
 
 </div>
+{% if user.is_authenticated %}
+<form action="{% url 'add_review' b.id %}" method='POST'>
+  {% csrf_token %}
+  
+  {{ review_form.as_p }}
+  <input type="submit" class="btn" value="Add Review">
+</form>
+{% endif %}
+<div >
 
-<div class="col s6">
-
-  {% if user.is_authenticated %}
-    <form action="{% url 'add_review' b.id %}" method='POST'>
-      {% csrf_token %}
-      
-      {{ review_form.as_p }}
-      <input type="submit" class="btn" value="Add Review">
-    </form>
-b{% endif %}
+ 
 
     <br>
     <table class="striped">
@@ -37,7 +37,7 @@ b{% endif %}
        
         {% for review in review %}
           <tr>
-            <td>{{review.review}}</td>
+            <td>{{user.username}}: {{review.review}}</td>
           </tr>
         {% endfor %}
       </tbody>
