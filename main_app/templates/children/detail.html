@@ -13,18 +13,20 @@
   </div>
 
   <div class="row">
-    <div class="col s6">
+    <div >
       <h3>{{ child.name }}'s Books</h3>
       {% if child.books.count %}
+      <div class="owned">
         {% for book in child.books.all %}
-          <div class="card">
+          <div class="card c">
             <div class="card-content">
+              <img class='bookImg' style='margin:0auto' src='{{book.image_url}}'/>
+                <div><strong style='color:blue'>Title:</strong> {{ book.title}}</div>
+                <div><strong style='color:blue'>Author:</strong> {{ book.author}}</div>
+                <div><strong style='color:blue'>Description:</strong> {{ book.description}}</div>
             </div>
             <div class="card-action">
-                <div>{{ book.title}}</div>
-                <div>{{ book.author}}</div>
-                <div>{{ book.description}}</div>
-                <div>{{ book.age_group}}</div>
+              
               <form action="{% url 'disassoc_book' child.id book.id %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn">Remove</button>
@@ -32,6 +34,7 @@
             </div>
           </div>
         {% endfor %}
+        </div>
       {% else %}
         <h5>No Books 😿</h5>
       {% endif %}
@@ -40,10 +43,10 @@
   </div>
   <!-- Available toys will come after this line -->
   <!-- New Markup Below -->
-  <div class="tt">
-
-    <div >
-        <h3>Available Books</h3>
+  <div >
+<h3>Available Books</h3>
+    <div class="tt">
+        
 
         {% if books.count %}
           {% for book in books.all %}

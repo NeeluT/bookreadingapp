@@ -2,11 +2,14 @@ body{
    color: rgb(211, 109, 0);
     background: linear-gradient(180deg, #80FFC9 0%, #F5CC63 100%);   
     overflow-x : hidden;
+    height: auto;
 }
 .svg{
-    width: 90vmin;
+  
     height: 90vmin;
     position: absolute;
+    bottom: 0;
+    right: 0;
     
 }
 .sun{
@@ -15,12 +18,15 @@ body{
     opacity: 0.5;
     position: absolute;
     top: 10vmin;
+    z-index: -20;
 
 }
 .bookImg{
     height: 15vmin;
     width: 18vmin;
+    z-index: 2;
 }
+
 .bookimgdiv{
     display: flex;
     flex-wrap: wrap;
@@ -60,17 +66,29 @@ li>.brand-logo{color: rgb(211, 109, 0);}
     align-items: center;
 }
 .tt{
+    margin-top: 50px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 .card-content{
     display: flex;
+    
     flex-direction: column;
 }
+.owned{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
 .card{
-    margin-top: 50px;
+    width: 23vmin;
    background: rgba(255, 243, 134, 0.42);
    box-shadow: 40px 40px 73px 2px rgba(171, 91, 91, 0.45);
    border-radius: 20px;
+}
+.c{
+    width:25vmin;
 }
 .parentImage{
     height: 40vmin;
