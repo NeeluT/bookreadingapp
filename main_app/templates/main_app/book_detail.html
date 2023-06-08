@@ -5,11 +5,17 @@
 <h1>Book Details</h1>
 
 {% for b in book.all %}
-<p>title:{{b.title}}</p>
-<p>author: {{b.author}}</p>
-<img src={{b.image_url}} alt=''>
-<p>description:{{ b.description}}</p>
-<p>age_group:{{ b.age_group}}</p>
+<div class='bookdetail'>
+  <img class='detailimg' src={{b.image_url}} alt=''>
+  
+  <div class='detailinfo'>
+  <p>title:{{b.title}}</p>
+  <p>author: {{b.author}}</p>
+  <p>description:{{ b.description}}</p>
+  <p>age_group:{{ b.age_group}}</p>
+  </div>
+
+</div>
 
 <div class="col s6">
 
@@ -36,5 +42,8 @@ b{% endif %}
         {% endfor %}
       </tbody>
     </table>
+
+
+
 {% endfor%}
 {% endblock %}

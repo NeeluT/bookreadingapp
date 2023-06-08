@@ -7,7 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-# from .data import data
+from .data import data
 from .forms import ReviewForm
 
 
@@ -21,6 +21,7 @@ def about(request):
     return render(request, 'about.html')
 
 def books_index(request):
+
     books = Book.objects.all()
     return render(request, 'main_app/book_index.html',{'books': books})
 
@@ -143,3 +144,4 @@ def signup(request):
     form = UserCreationForm()
     context = { 'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+

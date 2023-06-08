@@ -21,5 +21,7 @@ urlpatterns = [
     
     path('accounts/singup', views.signup, name='signup'),
     
+   
+    
 
 ]
