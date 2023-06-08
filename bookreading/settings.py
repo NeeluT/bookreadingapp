@@ -101,7 +101,7 @@ DATABASES = {
 }
 DATABASES = {
     'default': dj_database_url.config(     
-    default='postgresql://postgres:postgres@localhost:5432/<name_of_database>',        
+    default='postgresql://postgres:postgres@localhost:5432/bookapp',        
     conn_max_age=600    )
     }
 
