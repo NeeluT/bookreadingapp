@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 
 
 AGE_GROUP = (
-  ('A', '0-3 Months'),
-  ('B', '3-6 Months'),
-  ('C', '6-12 Months'),
-  ('D', '1-3 Years'), 
-  ('E', '3-7 Years'),
-  ('F', '7-13 Years'),
+  ('A', '0-2 Years'), 
+  ('B', '3-4 Years'),
+  ('C', '5-6 Years'),
+  ('D', '7-9 Years'), 
+  ('E', '10-11 Years'),
+  ('F', '12-13 Years')
 )
+
 
 
 # Create your models here.
@@ -34,17 +35,11 @@ class Book(models.Model):
 
 class Child(models.Model):
     name = models.CharField(max_length=100)
-    # age_group = models.CharField(
-    #     max_length=1,
-    #     choices=AGE_GROUP,
-    #     default=AGE_GROUP[0][0]
-    # )
     age_group = models.IntegerField()
     books = models.ManyToManyField(Book)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-
         AGE_GROUP
 
     def __str__(self):

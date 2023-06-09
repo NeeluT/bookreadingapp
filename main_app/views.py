@@ -2,7 +2,7 @@ from django.forms.models import BaseModelForm
 from django.shortcuts import render, redirect
 from .models import Child, Book, Review
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -10,9 +10,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .data import data
 from .forms import ReviewForm
 
-
-# Create your views here.
-# data = data()
 
 def home(request):
     return render(request, 'home.html')
@@ -39,38 +36,21 @@ def children_index(request):
         'children': children
     })
 
-# @login_required
-# def children_detail(request, child_id):
-#     child = Child.objects.get(id=child_id)
-#     books = Book.objects.filter(user=request.user)
-#     return render(request, 'children/detail.html', {
-#         'child': child,
-#         'books': books
-#     })
 
 @login_required
 def children_detail(request, child_id): 
-    
-    tu={'D': [1,2,3], 
-        'E': [4,5,6],
-        'F': [7,8,9,10,11,12,13]}
+    tu={'A': [0,1,2], 
+        'B': [3,4],
+        'C': [5,6],
+        'D':[7,8,9],
+        'E':[10,11],
+        'F':[12,13]}
     letterHoldingAge=""
-    
     child = Child.objects.get(id=child_id)
-    
     for t in tu:
         if(child.age_group in tu[t]):
             letterHoldingAge=t
-            
-    print(child.age_group)
-    print(letterHoldingAge)        
-    
-    id_list = child.books.all().values_list('id')
     books_child_doesnt_have = Book.objects.filter(age_group=letterHoldingAge)
-    print(books_child_doesnt_have)
-
-      
-
     return render(request, 'children/detail.html', {
         'child': child,
         'books': books_child_doesnt_have
@@ -88,13 +68,6 @@ class ChildCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-# def add_child(request, user_id):
-#   form = ChildForm(request.POST)
-#   if form.is_valid():
-#     new_child = form.save(commit=False)
-#     new_child.user_id = user_id
-#     new_child.save()
-#   return redirect('detail', user_id=user_id)
 
 
 class ChildUpdate(UpdateView):
@@ -138,7 +111,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('about')
         else:
             error_message = 'Invalid sign up - try again. Go home.'
     form = UserCreationForm()

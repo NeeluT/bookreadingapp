@@ -17,9 +17,24 @@ body{
     z-index: -2;
     
 }
+.addsvg{
+    background-color: #0eab71;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addingmi{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 .childinfodiv{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 100px;
 }
 .childinf{
@@ -35,7 +50,7 @@ body{
 
 }
 .bookImg{
-    height: 16vmin;
+    height: 22vmin;
     width: 17.7vmin;
     z-index: 2;
     border-radius: 0px 30px 30px 0px;
@@ -67,9 +82,7 @@ a{
     height: 350px;
     border-radius: 0px 20px 20px 0px;
 }
-.detailinfo{
-    width: 60%;
-}
+
 #id_review{
     width: 100%;
     justify-content: left;
