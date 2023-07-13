@@ -94,9 +94,9 @@ DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'neondb',
-    'USER': 'Hackerbibou',
-    'PASSWORD': 'gqHYLNb4vU5A',
-    'HOST': 'ep-silent-snowflake-671226.us-east-2.aws.neon.tech',
+    'USER': 'NeeluT',
+    'PASSWORD': 'O6mIlN1UqLZS',
+    'HOST': 'ep-holy-cherry-942500.us-east-2.aws.neon.tech',
     'PORT': '5432',
   }
 }
